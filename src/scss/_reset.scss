@@ -1,0 +1,46 @@
+@use "variables" as v;
+@import-normalize;
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+div,
+span,
+object,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+img,
+strike,
+strong,
+u,
+i,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+main,
+footer,
+header,
+nav,
+section {
+  margin: 0;
+  padding: 0;
+  font-family: v.$default-font;
+}
+
+ol,
+ul {
+  list-style: none;
+}
