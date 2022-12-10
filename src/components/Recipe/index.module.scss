@@ -1,0 +1,199 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+%textStyling {
+  color: $white;
+  position: absolute;
+  left: 15px;
+  z-index: 2;
+  text-shadow: 1px 1px 4px rgb(60, 64, 72);
+}
+
+%blockDisplay {
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  -webkit-transition: all 0.47s ease-out;
+  -moz-transition: all 0.47s ease-out;
+  -ms-transition: all 0.47s ease-out;
+  -o-transition: all 0.47s ease-out;
+  transition: all 0.47s ease-out;
+}
+
+.card {
+  @extend %blockDisplay;
+  margin: 0 auto;
+  background: $white;
+  width: 100%;
+  height: 250px;
+  box-shadow: 0 3px 10px rgba(55, 55, 55, 0.3);
+  cursor: pointer;
+
+  figure {
+    @extend %blockDisplay;
+
+    div {
+      &:before {
+        content: "";
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        opacity: 0.57;
+        background: -moz-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 1%,
+          rgba(0, 0, 0, 0.7) 1%
+        );
+        background: -webkit-gradient(
+          linear,
+          left top,
+          left bottom,
+          color-stop(13%, rgba(0, 0, 0, 0)),
+          color-stop(100%, rgba(0, 0, 0, 0.7))
+        );
+        background: -webkit-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 13%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        background: -o-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 13%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        background: -ms-linear-gradient(
+          top,
+          rgba(0, 0, 0, 0) 13%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        background: linear-gradient(
+          to bottom,
+          rgba(0, 0, 0, 0) 13%,
+          rgba(0, 0, 0, 0.7) 100%
+        );
+        -webkit-transition: all 0.47s ease-out;
+        -moz-transition: all 0.47s ease-out;
+        -ms-transition: all 0.47s ease-out;
+        -o-transition: all 0.47s ease-out;
+        transition: all 0.47s ease-out;
+      }
+    }
+
+    h1 {
+      font-size: $font;
+      bottom: 25px;
+      margin: 0px 15px 5px 0px;
+      @extend %textStyling;
+
+      @include breakpoint(sm) {
+        font-size: $font-md;
+      }
+
+      @include breakpoint(md) {
+        font-size: $font;
+      }
+
+      @include breakpoint(xxl) {
+        font-size: $font-md;
+      }
+    }
+
+    h2 {
+      font-size: 12px;
+      bottom: 10px;
+      @extend %textStyling;
+
+      @include breakpoint(sm) {
+        font-size: $font;
+      }
+
+      @include breakpoint(md) {
+        font-size: 12px;
+      }
+
+      @include breakpoint(xxl) {
+        font-size: $font;
+      }
+    }
+
+    img {
+      @extend %blockDisplay;
+      display: block;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+  }
+
+  &:hover {
+    figure {
+      div {
+        &:before {
+          opacity: 0.7;
+        }
+      }
+
+      img {
+        top: 100px;
+      }
+    }
+  }
+}
+
+.card:hover figure,
+.card:hover .bodyCard,
+.card:hover .tagsLink {
+  top: -180px;
+}
+
+.bodyCard {
+  @extend %blockDisplay;
+  height: 152px;
+  font-style: italic;
+
+  p {
+    font-size: 12px;
+    line-height: 20px;
+    padding: 15px;
+
+    @include breakpoint(sm) {
+      font-size: 14px;
+    }
+
+    @include breakpoint(md) {
+      font-size: 12px;
+    }
+
+    @include breakpoint(xxxl) {
+      font-size: $font;
+    }
+  }
+}
+
+.tagsLink {
+  @extend %blockDisplay;
+  padding: 0px 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: $secondary;
+
+  li {
+    padding-left: 15px;
+    font-size: $font;
+    color: $dark;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 50%;
+    text-align: center;
+
+    a {
+      opacity: 0.8;
+      color: $dark;
+    }
+  }
+}
