@@ -14,7 +14,7 @@
 
   &__content {
     overflow: hidden;
-    color: $light;
+    color: $white;
     margin: 0 auto;
     max-width: 1920px;
     height: 100%;
@@ -27,7 +27,7 @@
     font-size: 32px;
     font-weight: bold;
     text-decoration: none;
-    color: $light;
+    color: $white;
   }
 
   &__nav {
@@ -90,11 +90,11 @@
           transition: 0.3s ease all;
 
           &:hover {
-            background: rgba($light, 0.1);
+            background: rgba($white, 0.1);
           }
 
           &:active {
-            background: linear-gradient(rgba($light, 0.2), rgba($light, 0.3));
+            background: linear-gradient(rgba($white, 0.2), rgba($white, 0.3));
           }
         }
       }

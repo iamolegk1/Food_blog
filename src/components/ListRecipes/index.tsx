@@ -1,34 +1,33 @@
-import React, { FC } from "react";
-import { useGetRecipesQuery } from "../../redux/api";
+import React, { FC, useState } from "react";
 
-import loadingGif from "../../assets/waiting.gif";
+import { useGetRecipesQuery } from "../../redux/api";
+import Loader from "../Loader";
+import Pagination from "../Pagination";
 import Recipe from "../Recipe";
 
 import styles from "./index.module.scss";
 
 const ListRecipes: FC = () => {
-  const { data = [], isLoading, isError } = useGetRecipesQuery("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const { data: recipes, isLoading, isError } = useGetRecipesQuery(currentPage);
 
   if (isLoading) {
-    return (
-      <img
-        className={styles.loader}
-        src={loadingGif}
-        alt="wait until the page loads"
-      />
-    );
+    return <Loader />;
   }
 
-  if (isError || !data) {
+  if (isError || !recipes) {
     return <h1>Something went wrong</h1>;
   }
 
   return (
-    <div className={styles.container}>
-      {data.map((item) => (
-        <Recipe key={item.id} {...item} />
-      ))}
-    </div>
+    <>
+      <div className={styles.container}>
+        {recipes.map((item) => (
+          <Recipe key={item.id} {...item} />
+        ))}
+      </div>
+      <Pagination onChangePage={(number) => setCurrentPage(number)} />
+    </>
   );
 };
 

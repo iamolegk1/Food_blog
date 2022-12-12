@@ -1,5 +1,6 @@
 @import "../../scss/mixins";
 @import "../../scss/extends";
+@import "../../scss/variables";
 
 .container {
   padding: 40px;
@@ -16,6 +17,7 @@
   @include breakpoint(md) {
     grid-template-columns: repeat(2, 1fr);
     grid-column-gap: 50px;
+    min-height: 670px;
   }
 
   @include breakpoint(lg) {
@@ -25,13 +27,4 @@
   @include breakpoint(xxl) {
     grid-template-columns: repeat(4, 1fr);
   }
-}
-
-.loader {
-  position: absolute;
-  width: 256px;
-  height: 256px;
-  top: 50%;
-  left: 50%;
-  margin: -128px 0 0 -128px;
 }

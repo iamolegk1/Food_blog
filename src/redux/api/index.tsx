@@ -7,8 +7,8 @@ export const recipesApi = createApi({
     baseUrl: "https://6377bfb45c477765122610ad.mockapi.io/",
   }),
   endpoints: (builder) => ({
-    getRecipes: builder.query<IresipesTemplate[], string>({
-      query: () => `recipes`,
+    getRecipes: builder.query<IresipesTemplate[], number | void>({
+      query: (page) => `recipes?p=${page}&l=8`,
     }),
   }),
 });
