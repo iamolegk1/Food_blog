@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import loadingGif from "../../assets/waiting.gif";
+import loadingGif from "../../../assets/waiting.gif";
 
 import styles from "./index.module.scss";
 

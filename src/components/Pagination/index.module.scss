@@ -1,10 +1,15 @@
 @import "../../scss/variables";
 @import "../../scss/extends";
+@import "../../scss/mixins";
 
 .root {
   @extend %center;
   padding: 20px 0px;
   gap: 10px;
+
+  @include breakpoint(xxl) {
+    padding: 0px 20px 20px 20px;
+  }
 
   li {
     display: inline-block;

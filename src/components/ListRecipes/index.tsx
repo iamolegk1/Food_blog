@@ -1,32 +1,52 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useCallback } from "react";
 
-import { useGetRecipesQuery } from "../../redux/api";
-import Loader from "../Loader";
-import Pagination from "../Pagination";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { selectRecipes } from "../../redux/slices/recipes/selectors";
+import { selectFilter } from "../../redux/slices/filter/selectors";
+import { selectPage } from "../../redux/slices/pagination/selectors";
+import { selectSearch } from "../../redux/slices/search/selectors";
+import { getRecipes } from "../../redux/api";
 import Recipe from "../Recipe";
+import Pagination from "../Pagination";
+import Loader from "../UI/Loader";
 
 import styles from "./index.module.scss";
 
 const ListRecipes: FC = () => {
-  const [currentPage, setCurrentPage] = useState(1);
-  const { data: recipes, isLoading, isError } = useGetRecipesQuery(currentPage);
+  const dispatch = useAppDispatch();
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  const { entities: recipes, status } = useAppSelector(selectRecipes);
+  const { activeFilter } = useAppSelector(selectFilter);
+  const { currentPage } = useAppSelector(selectPage);
+  const { searchValue } = useAppSelector(selectSearch);
 
-  if (isError || !recipes) {
-    return <h1>Something went wrong</h1>;
-  }
+  const search = searchValue ? `&title=${searchValue}` : "";
+  const filter = activeFilter !== "all" ? `&tags=${activeFilter}` : "";
+
+  const fetchRecipes = useCallback(async () => {
+    dispatch(
+      getRecipes({
+        filter,
+        currentPage,
+        search,
+      })
+    );
+  }, [filter, currentPage, search, dispatch]);
+
+  useEffect(() => {
+    fetchRecipes();
+  }, [currentPage, fetchRecipes, searchValue]);
 
   return (
     <>
       <div className={styles.container}>
+        {status === "pending" && <Loader />}
+        {status === "failed" && <h1>Something went wrong</h1>}
         {recipes.map((item) => (
           <Recipe key={item.id} {...item} />
         ))}
       </div>
-      <Pagination onChangePage={(number) => setCurrentPage(number)} />
+      {status === "succeeded" && <Pagination />}
     </>
   );
 };

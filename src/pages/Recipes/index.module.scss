@@ -1,0 +1,6 @@
+@import "../../scss/extends";
+
+.container {
+  @extend %center;
+  padding-top: 20px;
+}

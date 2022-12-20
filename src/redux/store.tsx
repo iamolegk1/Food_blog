@@ -1,12 +1,19 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { recipesApi } from "./api";
+
+import recipes from "./slices/recipes";
+import filter from "./slices/filter";
+import pagination from "./slices/pagination";
+import search from "./slices/search";
+import recipe from "./slices/detailedRecipe";
 
 export const store = configureStore({
   reducer: {
-    [recipesApi.reducerPath]: recipesApi.reducer,
+    recipes,
+    filter,
+    pagination,
+    search,
+    recipe,
   },
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(recipesApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

@@ -2,6 +2,7 @@
 @import "../../scss/mixins";
 
 .root {
+  min-height: 92px;
   display: flex;
   padding: 20px;
   white-space: nowrap;
@@ -13,7 +14,7 @@
     display: inline-block;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
-    background: #f2f2f2;
+    background: $grey;
     border-radius: 50px;
     margin-right: 10px;
     padding: 15px 30px;

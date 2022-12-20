@@ -1,0 +1,49 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+
+.root {
+  position: relative;
+  input {
+    background-color: $white;
+    background-image: url("../../assets/magnifier_search_zoom_icon.svg");
+    background-position: 10px 2px;
+    background-size: 35px auto;
+    background-repeat: no-repeat;
+    font-size: $font;
+    border: 1px solid $primary;
+    padding: 10px 55px;
+    width: 260px;
+    outline: none;
+    border-radius: 20px;
+    color: $dark;
+
+    &:focus {
+      transition: all 0.3s ease-in-out;
+      background-color: $grey;
+      width: 300px;
+      border: 1px solid $dark;
+    }
+
+    @include breakpoint(sm) {
+      width: 400px;
+
+      &:focus {
+        width: 400px;
+      }
+    }
+  }
+
+  svg {
+    right: 15px;
+    top: 6px;
+    cursor: pointer;
+    width: 30px;
+    height: auto;
+    position: absolute;
+
+    &:active path {
+      transition: all 0.2s ease-in-out;
+      fill: $dark;
+    }
+  }
+}

@@ -1,5 +1,4 @@
 @import "../../scss/mixins";
-@import "../../scss/extends";
 @import "../../scss/variables";
 
 .container {
@@ -26,5 +25,6 @@
 
   @include breakpoint(xxl) {
     grid-template-columns: repeat(4, 1fr);
+    padding: 20px 40px;
   }
 }

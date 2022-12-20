@@ -4,7 +4,7 @@ export interface Ingredient {
 }
 
 export interface IresipesTemplate {
-  id: number;
+  id: string;
   title: string;
   tags: string;
   description: string;

@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 
 import { Ingredient } from "../../types/templateData";
@@ -7,36 +8,22 @@ import { getNoun } from "../../utils";
 import styles from "./index.module.scss";
 
 interface IRecipeProps {
+  id: string;
   title: string;
   description: string;
   image: string;
   ingredients: Ingredient[];
-  video: string;
   tags: string;
 }
 
 const Recipe: FC<IRecipeProps> = ({
+  id,
   title,
   image,
   ingredients,
   description,
   tags,
-  video,
 }) => {
-  const currentWidth = window.innerWidth;
-
-  const descriptionArray: string[] = description.split(" ");
-
-  const shortDescription: string | void =
-    descriptionArray.length > 28
-      ? `${descriptionArray.slice(0, 28).join(" ")}...`
-      : description;
-
-  const longDescription: string | void =
-    descriptionArray.length > 42
-      ? `${descriptionArray.slice(0, 42).join(" ")}...`
-      : description;
-
   const declensionVariant: [string, string, string] = [
     "Ингридиент",
     "Ингридиента",
@@ -47,31 +34,29 @@ const Recipe: FC<IRecipeProps> = ({
     `${ingredients.length} ` +
     getNoun(ingredients.length, ...declensionVariant);
 
+  const capitalizeTitle = title.charAt(0).toUpperCase() + title.slice(1);
+
   return (
-    <aside className={styles.card}>
-      <figure>
-        <div>
+    <Link to={`/recipes/${id}`} style={{ textDecoration: "none" }}>
+      <aside className={styles.card}>
+        <figure>
           <img src={image} alt={title} />
+          <h1>{capitalizeTitle}</h1>
+          <h2>{ingredientsField}</h2>
+        </figure>
+        <div className={styles.bodyCard}>
+          <p>{description}</p>
         </div>
-        <h1>{title}</h1>
-        <h2>{ingredientsField}</h2>
-      </figure>
-      <div className={styles.bodyCard}>
-        <p>
-          {currentWidth >= 575 && currentWidth <= 767
-            ? longDescription
-            : shortDescription}
-        </p>
-      </div>
-      <ul className={styles.tagsLink}>
-        <li>{tags}</li>
-        <li>
-          <a href={video} target="_blank" rel="noopener noreferrer">
-            <FaYoutube size={29} />
-          </a>
-        </li>
-      </ul>
-    </aside>
+        <div className={styles.tagsLink}>
+          <div>{tags}</div>
+          <div>
+            <span>
+              <FaYoutube size={30} />
+            </span>
+          </div>
+        </div>
+      </aside>
+    </Link>
   );
 };
 
