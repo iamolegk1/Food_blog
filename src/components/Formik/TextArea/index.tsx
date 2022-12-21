@@ -9,9 +9,14 @@ interface ITextAreaProps {
 }
 
 const TextArea: FC<ITextAreaProps> = ({ label, name }) => (
-  <div className={styles.wrapper}>
+  <div className={styles.area}>
     <label htmlFor={name}>{label}</label>
-    <Field as="textarea" id={name} name={name} />
+    <Field
+      as="textarea"
+      id={name}
+      name={name}
+      placeholder="write your message"
+    />
     <ErrorMessage name={name}>
       {(errorMsg) => <div className={styles.error}>{errorMsg}</div>}
     </ErrorMessage>

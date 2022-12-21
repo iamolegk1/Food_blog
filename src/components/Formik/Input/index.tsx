@@ -10,9 +10,9 @@ interface IInputProps {
 }
 
 const Input: FC<IInputProps> = ({ label, name, type }) => (
-  <div className={styles.wrapper}>
+  <div className={styles.field}>
     <label htmlFor={name}>{label}</label>
-    <Field type={type} id={name} name={name} />
+    <Field type={type} id={name} name={name} placeholder={name} />
     <ErrorMessage name={name}>
       {(errorMsg) => <div className={styles.error}>{errorMsg}</div>}
     </ErrorMessage>

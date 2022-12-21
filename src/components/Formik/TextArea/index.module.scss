@@ -1,3 +1,26 @@
-.error {
-  color: red;
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+@import "../../../scss/extends";
+
+.area {
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+
+  textarea {
+    resize: none;
+    padding: 10px 25px;
+    width: 100%;
+    min-height: 150px;
+
+    @extend %field;
+  }
+
+  label {
+    @extend %label;
+  }
+
+  .error {
+    @extend %error;
+  }
 }

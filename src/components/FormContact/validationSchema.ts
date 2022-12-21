@@ -1,18 +1,21 @@
 import * as Yup from "yup";
 
 export const validationSchema = Yup.object({
+  firstName: Yup.string().required("FirstName is required"),
+
+  lastName: Yup.string().required("LastName is required"),
+
   email: Yup.string()
     .email("Must be a valid email")
-    .max(255)
     .required("Email is required"),
 
-  description: Yup.string()
-    .min(5, "minimum 5 letter")
-    .required("Description is required"),
-
-  selectOption: Yup.string().required("Select the desired option"),
+  message: Yup.string()
+    .min(5, "message minimum 5 letter")
+    .required("Message is required"),
 
   radioOption: Yup.string().required("Required radioOption"),
+
+  selectOption: Yup.string().required("Select the desired option"),
 
   checkboxOption: Yup.array().min(1, "Choose min 1"),
 });

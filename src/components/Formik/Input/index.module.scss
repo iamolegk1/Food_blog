@@ -1,3 +1,23 @@
-.error {
-  color: red;
+@import "../../../scss/variables";
+@import "../../../scss/mixins";
+@import "../../../scss/extends";
+
+.field {
+  margin: 20px;
+
+  input {
+    padding: 0px 25px;
+    width: 100%;
+    min-height: 50px;
+
+    @extend %field;
+  }
+
+  label {
+    @extend %label;
+  }
+
+  .error {
+    @extend %error;
+  }
 }

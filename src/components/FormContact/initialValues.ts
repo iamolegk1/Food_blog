@@ -1,15 +1,19 @@
 export interface IValues {
+  firstName: string;
+  lastName: string;
   email: string;
-  description: string;
-  selectOption: string;
+  message: string;
   radioOption: string;
   checkboxOption: [];
+  selectOption: string;
 }
 
 export const initialValues: IValues = {
+  firstName: "",
+  lastName: "",
   email: "",
-  description: "",
-  selectOption: "",
+  message: "",
   radioOption: "",
   checkboxOption: [],
+  selectOption: "",
 };
