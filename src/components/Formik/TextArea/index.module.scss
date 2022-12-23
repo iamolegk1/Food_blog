@@ -3,17 +3,32 @@
 @import "../../../scss/extends";
 
 .area {
-  margin: 20px;
+  margin: 15px 5px;
   display: flex;
   flex-direction: column;
 
-  textarea {
-    resize: none;
-    padding: 10px 25px;
-    width: 100%;
-    min-height: 150px;
+  .textAreaWrapper {
+    @extend %fieldWrapper;
+    height: 150px;
 
-    @extend %field;
+    textarea {
+      resize: none;
+      height: 150px;
+
+      @extend %field;
+
+      &::placeholder {
+        font-weight: 100;
+        color: $primary;
+        opacity: 0.6;
+      }
+
+      &:focus {
+        transition: all 0.3s ease-in-out;
+        background-color: $grey;
+        min-height: 150px;
+      }
+    }
   }
 
   label {

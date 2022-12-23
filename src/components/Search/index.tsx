@@ -1,4 +1,5 @@
-import React, { FC, useState, useRef } from "react";
+import React, { useState, useRef, forwardRef } from "react";
+import { motion } from "framer-motion";
 import debounce from "lodash.debounce";
 
 import { useAppDispatch } from "../../redux/hooks";
@@ -6,7 +7,7 @@ import { setSearchValue } from "../../redux/slices/search";
 
 import styles from "./index.module.scss";
 
-const Search: FC = () => {
+const Search = forwardRef<HTMLElement>((_, ref) => {
   const dispatch = useAppDispatch();
 
   const [value, setValue] = useState<string>("");
@@ -32,7 +33,7 @@ const Search: FC = () => {
   ).current;
 
   return (
-    <div className={styles.root}>
+    <section ref={ref} className={styles.root}>
       <input
         ref={inputRef}
         value={value}
@@ -53,8 +54,8 @@ const Search: FC = () => {
           ></path>
         </svg>
       ) : null}
-    </div>
+    </section>
   );
-};
+});
 
-export default Search;
+export const MSearch = motion(Search);

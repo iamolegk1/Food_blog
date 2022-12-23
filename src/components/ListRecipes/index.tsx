@@ -39,9 +39,9 @@ const ListRecipes: FC = () => {
 
   return (
     <>
+      {status === "pending" && <Loader />}
+      {status === "failed" && <h1>Something went wrong</h1>}
       <div className={styles.container}>
-        {status === "pending" && <Loader />}
-        {status === "failed" && <h1>Something went wrong</h1>}
         {recipes.map((item) => (
           <Recipe key={item.id} {...item} />
         ))}

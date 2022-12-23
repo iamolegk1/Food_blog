@@ -12,7 +12,7 @@ export const checkboxOptions: TOptions[] = [
 ];
 
 export const selectOptions: TOptions[] = [
-  { key: "Select an option 🠋", value: "" },
+  { key: "Select an option", value: "" },
   { key: "Option 1", value: "Option 1 Select" },
   { key: "Option 2", value: "Option 2 Select" },
   { key: "Option 3", value: "Option 3 Select" },

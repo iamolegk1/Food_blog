@@ -14,45 +14,38 @@
 }
 
 %label {
-  color: $dark;
   margin-left: 25px;
   font-size: $font;
   font-weight: 500;
+  color: $dark;
 }
 
-%field {
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-  font-size: $font-sm;
+%fieldWrapper {
   margin: 10px 0;
   box-shadow: #457b9d 0px 1px 2px 0px, #457b9d 0px 1px 3px 1px;
   border-radius: 20px;
+  background-color: $white;
+}
+
+%field {
+  color: $dark;
+  cursor: pointer;
+  border-radius: 20px;
+  width: 100%;
+  padding: 10px 25px;
+  font-size: $font-sm;
   border: none;
   outline: none;
-  background-color: $white;
-  color: $dark;
-
-  &::placeholder {
-    font-weight: 100;
-    color: $primary;
-    opacity: 0.6;
-  }
-
-  &:focus {
-    transition: all 0.3s ease-in-out;
-    background-color: $grey;
-  }
+  background-color: transparent;
+  transition: all 0.3s ease-in-out;
 }
 
 %button {
-  width: 150px;
-  height: 50px;
   font-size: $font;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  letter-spacing: 1.4px;
   font-weight: 600;
   color: $white;
-  background-color: #2ecc71;
   border: none;
   border-radius: 40px;
   box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
@@ -63,13 +56,22 @@
 
   &:disabled {
     cursor: not-allowed;
-    background-color: #dddddd;
-    color: #9e9e9e;
+    background-color: $disabled;
+    color: $hoverDisabled;
+  }
+}
+
+%picAbout {
+  visibility: hidden;
+  position: absolute;
+  width: 300px;
+  height: auto;
+
+  @media (min-width: 1200px) {
+    visibility: visible;
   }
 
-  // &:hover {
-  //   background-color: #2ecc71;
-  //   box-shadow: #2ecc71 0px 3px 8px;
-  //   color: $white;
-  // }
+  @media (min-width: 1400px) {
+    width: 400px;
+  }
 }

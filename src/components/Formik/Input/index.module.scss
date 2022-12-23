@@ -3,14 +3,26 @@
 @import "../../../scss/extends";
 
 .field {
-  margin: 20px;
+  margin: 15px 5px;
 
-  input {
-    padding: 0px 25px;
-    width: 100%;
-    min-height: 50px;
+  .inputWrapper {
+    @extend %fieldWrapper;
 
-    @extend %field;
+    input {
+      @extend %field;
+      height: 50px;
+
+      &::placeholder {
+        font-weight: 100;
+        color: $primary;
+        opacity: 0.6;
+      }
+
+      &:focus {
+        transition: all 0.3s ease-in-out;
+        background-color: $grey;
+      }
+    }
   }
 
   label {

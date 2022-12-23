@@ -5,17 +5,17 @@ export const validationSchema = Yup.object({
 
   lastName: Yup.string().required("LastName is required"),
 
-  email: Yup.string()
-    .email("Must be a valid email")
-    .required("Email is required"),
+  // email: Yup.string()
+  //   .email("Must be a valid email")
+  //   .required("Email is required"),
 
   message: Yup.string()
-    .min(5, "message minimum 5 letter")
+    .min(5, "Message minimum 5 letter")
     .required("Message is required"),
 
-  radioOption: Yup.string().required("Required radioOption"),
+  // radioOption: Yup.string().required("Required radioOption"),
 
-  selectOption: Yup.string().required("Select the desired option"),
+  // selectOption: Yup.string().required("Select the desired option"),
 
-  checkboxOption: Yup.array().min(1, "Choose min 1"),
+  // checkboxOption: Yup.array().min(1, "Choose min 1"),
 });

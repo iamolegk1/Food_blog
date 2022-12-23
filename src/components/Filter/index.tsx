@@ -1,4 +1,5 @@
-import React, { FC } from "react";
+import React, { forwardRef } from "react";
+import { motion } from "framer-motion";
 
 import { useAppSelector, useAppDispatch } from "../../redux/hooks";
 import { setActiveFilter } from "../../redux/slices/filter";
@@ -7,12 +8,12 @@ import { categories } from "./constants";
 
 import styles from "./index.module.scss";
 
-const Filter: FC = () => {
+const Filter = forwardRef<HTMLUListElement>((_, ref) => {
   const dispatch = useAppDispatch();
   const { activeFilter } = useAppSelector(selectFilter);
 
   return (
-    <ul className={styles.root}>
+    <ul ref={ref} className={styles.root}>
       {categories.map((elem, i) => (
         <li
           key={i}
@@ -24,6 +25,6 @@ const Filter: FC = () => {
       ))}
     </ul>
   );
-};
+});
 
-export default Filter;
+export const MFilter = motion(Filter);
