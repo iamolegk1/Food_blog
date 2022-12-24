@@ -1,41 +1,51 @@
 @import "../../scss/extends";
 
 .container {
-  position: relative;
   width: 100%;
-  overflow: hidden;
+  min-height: 100%;
+  margin: 0;
 
   background-image: url("../../assets/image/backgroundPage/backgroundAbout.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
 
-  .logo {
-    @extend %picAbout;
+  .formWrapper {
+    margin: 0 auto;
+    position: relative;
 
-    top: 100px;
-    left: 30px;
-  }
+    @media (min-width: 2000px) {
+      margin: 0 auto;
+      max-width: 1920px;
+    }
 
-  .logo2 {
-    @extend %picAbout;
+    .logo {
+      @extend %picAbout;
 
-    top: 300px;
-    right: 30px;
-  }
+      top: 100px;
+      left: 30px;
+    }
 
-  .logo3 {
-    @extend %picAbout;
+    .logo2 {
+      @extend %picAbout;
 
-    bottom: 200px;
-    left: 30px;
-  }
+      top: 300px;
+      right: 30px;
+    }
 
-  .logo4 {
-    @extend %picAbout;
+    .logo3 {
+      @extend %picAbout;
 
-    bottom: 100px;
-    right: 30px;
+      bottom: 200px;
+      left: 30px;
+    }
+
+    .logo4 {
+      @extend %picAbout;
+
+      bottom: 100px;
+      right: 30px;
+    }
   }
 }
 

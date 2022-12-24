@@ -18,3 +18,7 @@ export const getNoun = (
   }
   return three;
 };
+
+export const capitalize = (text: string) => {
+  return text.charAt(0).toUpperCase() + text.slice(1);
+};

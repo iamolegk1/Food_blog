@@ -7,6 +7,12 @@ import { getDetailedRecipe } from "../../redux/api";
 import Loader from "../../components/UI/Loader";
 import FullRecipe from "../../components/FullRecipe";
 import NotFound from "../NotFound";
+// import { ReactComponent as Recipe1 } from "../../assets/image/detRecipePage/Recipebookamico.svg";
+// import { ReactComponent as Recipe2 } from "../../assets/image/aboutPage/rafiki.svg";
+// import { ReactComponent as Recipe3 } from "../../assets/image/aboutPage/bro.svg";
+// import { ReactComponent as Recipe4 } from "../../assets/image/aboutPage/pana.svg";
+
+import styles from "./index.module.scss";
 
 const DetailedRecipePage: FC = () => {
   const { id } = useParams();
@@ -23,18 +29,19 @@ const DetailedRecipePage: FC = () => {
   }, [id, fetchRecipe]);
 
   return (
-    <>
-      {status === "pending" && <Loader />}
+    <div className={styles.container}>
+      <div className={styles.buttonWrapper}>
+        <Link to="/recipes">
+          <button>
+            <span>Назад</span>
+          </button>
+        </Link>
+      </div>
       {status === "failed" && (
         <NotFound title={"Такого рецепта не существует"} />
       )}
-      <Link to="/recipes">
-        <button>
-          <span>Назад</span>
-        </button>
-      </Link>
-      <FullRecipe {...recipe} />
-    </>
+      {status === "succeeded" ? <FullRecipe {...recipe} /> : <Loader />}
+    </div>
   );
 };
 

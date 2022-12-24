@@ -53,7 +53,7 @@ const FormContact: FC = () => {
   const notifySuccess = () =>
     toast.success("Message delivered!", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: false,
       pauseOnHover: false,
@@ -65,7 +65,7 @@ const FormContact: FC = () => {
   const notifyError = () =>
     toast.error("Message not delivered!", {
       position: "top-center",
-      autoClose: 3000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: false,
       pauseOnHover: false,

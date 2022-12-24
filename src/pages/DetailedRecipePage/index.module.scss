@@ -1,0 +1,35 @@
+@import "../../scss/variables";
+@import "../../scss/mixins";
+@import "../../scss/extends";
+
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+
+  background-image: url("../../assets/image/backgroundPage/backRecipe.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  .buttonWrapper {
+    align-self: flex-end;
+    margin-right: 30px;
+
+    button {
+      width: 120px;
+      height: 50px;
+      margin: 10px 0px;
+      background-color: $buttonReset;
+
+      &:hover {
+        background-color: $buttonHover;
+        color: $white;
+      }
+
+      @extend %button;
+    }
+  }
+}

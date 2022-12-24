@@ -39,13 +39,16 @@ const ListRecipes: FC = () => {
 
   return (
     <>
-      {status === "pending" && <Loader />}
       {status === "failed" && <h1>Something went wrong</h1>}
-      <div className={styles.container}>
-        {recipes.map((item) => (
-          <Recipe key={item.id} {...item} />
-        ))}
-      </div>
+      {status === "succeeded" ? (
+        <div className={styles.container}>
+          {recipes.map((item) => (
+            <Recipe key={item.id} {...item} />
+          ))}
+        </div>
+      ) : (
+        <Loader />
+      )}
       {status === "succeeded" && <Pagination />}
     </>
   );

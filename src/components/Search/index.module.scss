@@ -3,6 +3,7 @@
 
 .root {
   position: relative;
+
   input {
     background-color: $white;
     background-image: url("../../assets/image/magnifier_search_zoom_icon.svg");
@@ -12,7 +13,7 @@
     font-size: $font;
     border: 1px solid $primary;
     padding: 10px 55px;
-    width: 260px;
+    width: 300px;
     outline: none;
     border-radius: 20px;
     color: $dark;
@@ -20,7 +21,7 @@
     &:focus {
       transition: all 0.3s ease-in-out;
       background-color: $grey;
-      width: 300px;
+      width: 320px;
       border: 1px solid $dark;
     }
 

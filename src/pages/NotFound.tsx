@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+import { ReactComponent as NotFoundImg } from "../assets/image/notf.svg";
 interface INotFound {
   title: string;
 }
@@ -16,10 +17,17 @@ const NotFound: FC<INotFound> = ({ title }) => {
     return () => clearTimeout(timeout);
   }, [navigate]);
 
+  const container = {
+    display: "block",
+    margin: "0 auto",
+    width: "300px",
+    height: "auto",
+  };
+
   return (
     <>
-      <div>NotFound Page</div>
       <p>{title}</p>
+      <NotFoundImg style={container} />
       <Link to="/">
         <button>
           <span>Вернуться на главную</span>

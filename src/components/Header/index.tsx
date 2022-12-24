@@ -36,13 +36,12 @@ const Header: FC = () => {
               </Link>
             </li>
           </ul>
+          <div className={styles.header__hamburger}>
+            <AiOutlineClose onClick={menuToggleHandler} />
+          </div>
         </nav>
         <div className={styles.header__hamburger}>
-          {menuOpen ? (
-            <AiOutlineClose onClick={menuToggleHandler} />
-          ) : (
-            <FaHamburger onClick={menuToggleHandler} />
-          )}
+          <FaHamburger onClick={menuToggleHandler} />
         </div>
       </div>
     </header>

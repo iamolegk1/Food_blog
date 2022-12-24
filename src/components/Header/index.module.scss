@@ -2,6 +2,7 @@
 @import "../../scss/mixins";
 
 .header {
+  position: relative;
   background: $dark;
   width: 100%;
   height: 80px;
@@ -13,7 +14,6 @@
   }
 
   &__content {
-    overflow: hidden;
     color: $white;
     margin: 0 auto;
     max-width: 1920px;
@@ -101,7 +101,6 @@
   }
 
   &__hamburger {
-    z-index: 3;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -109,7 +108,7 @@
     transition: 0.3s ease all;
     position: relative;
 
-    &:hover {
+    &:active {
       color: $primary;
     }
 

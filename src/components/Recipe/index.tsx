@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { FaYoutube } from "react-icons/fa";
 
 import { Ingredient } from "../../types/templateData";
-import { getNoun } from "../../utils";
+import { capitalize, getNoun } from "../../utils";
 
 import styles from "./index.module.scss";
 
@@ -34,7 +34,7 @@ const Recipe: FC<IRecipeProps> = ({
     `${ingredients.length} ` +
     getNoun(ingredients.length, ...declensionVariant);
 
-  const capitalizeTitle = title.charAt(0).toUpperCase() + title.slice(1);
+  const capitalizeTitle = capitalize(title);
 
   return (
     <Link to={`/recipes/${id}`} style={{ textDecoration: "none" }}>

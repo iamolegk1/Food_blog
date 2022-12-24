@@ -2,6 +2,8 @@ import React, { FC } from "react";
 
 import { Ingredient } from "../../types/templateData";
 
+import styles from "./index.module.scss";
+
 interface IFullRecipe {
   id?: string;
   title?: string;
@@ -16,33 +18,59 @@ interface IFullRecipe {
 
 const FullRecipe: FC<IFullRecipe> = ({
   title,
+  image,
   description,
   cookTime,
   ingredients,
   steps,
-  image,
   video,
 }) => {
   return (
-    <>
-      <div>{title}</div>
-      <div>{description}</div>
-      <div>{cookTime}</div>
-      <div>{steps}</div>
-      <div>{title}</div>
-      <img src={image} alt={title} />
-      <div>{video}</div>
-      <ul>
-        {ingredients?.map((item, i) => (
-          <li key={i}>{item.name}</li>
-        ))}
-      </ul>
-      <ul>
-        {ingredients?.map((item, i) => (
-          <li key={i}>{item.qty}</li>
-        ))}
-      </ul>
-    </>
+    <div className={styles.container}>
+      <div className={styles.blurWrapper}>
+        <h1>{title}</h1>
+        <img src={image} alt={title} />
+        <p>{description}</p>
+      </div>
+      <div className={styles.timeBLock}>
+        <p>Cooking Time: {cookTime} minutes</p>
+        <p>Ingredients: {ingredients?.length}</p>
+      </div>
+      <div className={styles.ingredientsWrapper}>
+        <h2>Ingredients:</h2>
+        <div className={styles.ingredients}>
+          <ul>
+            {ingredients?.map((item, i) => (
+              <li key={i}>
+                <span> {Object.values(item).join(": ")}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className={styles.instructionsWrapper}>
+        <h2>Instructions:</h2>
+        <div className={styles.instructions}>
+          <ol>
+            {steps?.map((item, i) => (
+              <li key={i}>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </div>
+      <div className={styles.video}>
+        <iframe
+          width="300"
+          height="300"
+          src={video}
+          title={title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        ></iframe>
+      </div>
+    </div>
   );
 };
 

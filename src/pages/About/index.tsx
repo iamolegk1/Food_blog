@@ -19,11 +19,13 @@ const About: FC = () => {
       transition={{ duration: 0.5 }}
       className={styles.container}
     >
-      <About1 className={styles.logo} />
-      <About2 className={styles.logo2} />
-      <About3 className={styles.logo3} />
-      <About4 className={styles.logo4} />
-      <FormContact />
+      <div className={styles.formWrapper}>
+        <About1 className={styles.logo} />
+        <About2 className={styles.logo2} />
+        <About3 className={styles.logo3} />
+        <About4 className={styles.logo4} />
+        <FormContact />
+      </div>
     </motion.div>
   );
 };

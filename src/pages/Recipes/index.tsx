@@ -24,9 +24,9 @@ const Recipes: FC = () => {
     <motion.div initial="hidden" whileInView="visible">
       <div className={styles.container}>
         <MSearch custom={-30} variants={blockAnimation} />
+        <MFilter custom={30} variants={blockAnimation} />
+        <ListRecipes />
       </div>
-      <MFilter custom={30} variants={blockAnimation} />
-      <ListRecipes />
     </motion.div>
   );
 };
