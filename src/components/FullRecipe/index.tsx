@@ -31,10 +31,10 @@ const FullRecipe: FC<IFullRecipe> = ({
         <h1>{title}</h1>
         <img src={image} alt={title} />
         <p>{description}</p>
-      </div>
-      <div className={styles.timeBLock}>
-        <p>Cooking Time: {cookTime} minutes</p>
-        <p>Ingredients: {ingredients?.length}</p>
+        <div className={styles.timeBLock}>
+          <p>Cooking Time: {cookTime} minutes</p>
+          <p>Ingredients: {ingredients?.length}</p>
+        </div>
       </div>
       <div className={styles.ingredientsWrapper}>
         <h2>Ingredients:</h2>

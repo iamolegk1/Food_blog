@@ -9,6 +9,7 @@ import { getRecipes } from "../../redux/api";
 import Recipe from "../Recipe";
 import Pagination from "../Pagination";
 import Loader from "../UI/Loader";
+import NotFound from "../../pages/NotFound";
 
 import styles from "./index.module.scss";
 
@@ -37,18 +38,21 @@ const ListRecipes: FC = () => {
     fetchRecipes();
   }, [currentPage, fetchRecipes, searchValue]);
 
+  if (status === "pending") {
+    return <Loader />;
+  }
+
+  if (status === "failed") {
+    return <NotFound title={"Failed to load pizzas"} />;
+  }
+
   return (
     <>
-      {status === "failed" && <h1>Something went wrong</h1>}
-      {status === "succeeded" ? (
-        <div className={styles.container}>
-          {recipes.map((item) => (
-            <Recipe key={item.id} {...item} />
-          ))}
-        </div>
-      ) : (
-        <Loader />
-      )}
+      <div className={styles.container}>
+        {recipes.map((item) => (
+          <Recipe key={item.id} {...item} />
+        ))}
+      </div>
       {status === "succeeded" && <Pagination />}
     </>
   );

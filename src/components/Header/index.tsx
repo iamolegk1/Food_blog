@@ -31,8 +31,8 @@ const Header: FC = () => {
               </Link>
             </li>
             <li>
-              <Link to="/about" onClick={menuToggleHandler}>
-                About
+              <Link to="/contact" onClick={menuToggleHandler}>
+                Contact
               </Link>
             </li>
           </ul>

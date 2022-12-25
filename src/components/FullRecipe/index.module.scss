@@ -4,12 +4,17 @@
 
 .container {
   margin: 0 auto;
-  max-width: 1200px;
+  position: relative;
+
+  @include breakpoint(xxxl) {
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+  }
 
   .blurWrapper {
     @extend %center;
 
-    margin-top: 10px;
     flex-direction: column;
     gap: 20px;
     border-radius: 40px;
@@ -30,6 +35,11 @@
 
     @include breakpoint(lg) {
       width: 800px;
+    }
+
+    @include breakpoint(xxxl) {
+      flex-basis: 50%;
+      margin: 0px 150px;
     }
 
     h1 {
@@ -53,10 +63,6 @@
       border-radius: 20px;
       box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
         rgba(0, 0, 0, 0.23) 0px 3px 6px;
-
-      // @include breakpoint(md) {
-      //   width: 600px;
-      // }
     }
 
     p {
@@ -68,25 +74,23 @@
       height: auto;
       text-align: center;
       font-weight: 500;
-
-      // @include breakpoint(md) {
-      //   width: 600px;
-      // }
     }
   }
 
   .timeBLock {
     @extend %center;
+    flex-direction: column;
 
     gap: 20px;
-    width: 350px;
-    margin: 25px 0px;
-    padding: 10px 0px;
+    width: 100%;
     border-radius: 40px;
+    padding-top: 20px;
     backdrop-filter: blur(10px);
 
     @include breakpoint(sm) {
-      margin: 0 auto;
+      flex-direction: row;
+      gap: 20px;
+      white-space: nowrap;
     }
 
     p {
@@ -101,16 +105,37 @@
   .ingredientsWrapper {
     @extend %recipeWrapper;
 
+    h2 {
+      @include breakpoint(xxxl) {
+        font-size: $font-lg;
+      }
+    }
+
+    @include breakpoint(xxxl) {
+      margin: 0;
+      align-items: center;
+      justify-content: center;
+      font-size: $font-lg;
+    }
+
     .ingredients {
       @extend %manual;
+
       @include breakpoint(sm) {
         margin: 0px 50px;
       }
 
       ul {
         @extend %list;
+
         @include breakpoint(sm) {
           max-width: 100%;
+        }
+
+        li {
+          @include breakpoint(xxxl) {
+            font-size: $font-md;
+          }
         }
       }
     }
@@ -118,6 +143,18 @@
 
   .instructionsWrapper {
     @extend %recipeWrapper;
+
+    @include breakpoint(xxxl) {
+      max-width: 1000px;
+      margin: 50px;
+    }
+
+    h2 {
+      @include breakpoint(xxxl) {
+        font-size: $font-lg;
+        text-align: center;
+      }
+    }
 
     .instructions {
       @extend %manual;
@@ -130,6 +167,12 @@
 
         @include breakpoint(sm) {
           max-width: 100%;
+        }
+
+        li {
+          @include breakpoint(xxxl) {
+            font-size: $font-sm;
+          }
         }
       }
     }

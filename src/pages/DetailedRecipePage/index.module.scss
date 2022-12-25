@@ -4,32 +4,39 @@
 
 .container {
   position: relative;
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  min-height: 100%;
+  min-height: 100vh;
   margin: 0;
 
   background-image: url("../../assets/image/backgroundPage/backRecipe.jpg");
-  background-size: cover;
+  background-size: 100% 100%;
+  background-position: center;
   background-repeat: no-repeat;
 
-  .buttonWrapper {
-    align-self: flex-end;
-    margin-right: 30px;
+  .recipeWrapper {
+    max-width: 1920px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
 
-    button {
-      width: 120px;
-      height: 50px;
-      margin: 10px 0px;
-      background-color: $buttonReset;
+    .buttonWrapper {
+      margin-right: 25px;
+      align-self: flex-end;
 
-      &:hover {
-        background-color: $buttonHover;
-        color: $white;
+      button {
+        margin-right: auto;
+        width: 120px;
+        height: 50px;
+        margin: 10px 0px;
+        background-color: $buttonReset;
+
+        &:hover {
+          background-color: $buttonHover;
+          color: $white;
+        }
+
+        @extend %button;
       }
-
-      @extend %button;
     }
   }
 }

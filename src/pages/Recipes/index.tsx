@@ -22,9 +22,11 @@ const Recipes: FC = () => {
 
   return (
     <motion.div initial="hidden" whileInView="visible">
-      <div className={styles.container}>
+      <div className={styles.filterWrapper}>
         <MSearch custom={-30} variants={blockAnimation} />
         <MFilter custom={30} variants={blockAnimation} />
+      </div>
+      <div className={styles.listWrapper}>
         <ListRecipes />
       </div>
     </motion.div>
