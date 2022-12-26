@@ -48,12 +48,17 @@ const ListRecipes: FC = () => {
 
   return (
     <>
+      {recipes && recipes.length === 0 ? (
+        <h1 style={{ textAlign: "center" }}>
+          Не удалось найти рецепты по такому названию &#128532;
+        </h1>
+      ) : null}
       <div className={styles.container}>
-        {recipes.map((item) => (
-          <Recipe key={item.id} {...item} />
-        ))}
+        {recipes && recipes.length > 0
+          ? recipes.map((item) => <Recipe key={item.id} {...item} />)
+          : null}
       </div>
-      {status === "succeeded" && <Pagination />}
+      {status === "succeeded" && recipes.length > 0 && <Pagination />}
     </>
   );
 };

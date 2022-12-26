@@ -10,6 +10,7 @@ import FullRecipe from "../../components/FullRecipe";
 import NotFound from "../NotFound";
 
 import styles from "./index.module.scss";
+import ButtonBackToTop from "../../components/ButtonBackToTop";
 
 const DetailedRecipePage: FC = () => {
   const { id } = useParams();
@@ -51,6 +52,7 @@ const DetailedRecipePage: FC = () => {
         </div>
         <FullRecipe {...recipe} />
       </div>
+      <ButtonBackToTop />
     </motion.div>
   );
 };
